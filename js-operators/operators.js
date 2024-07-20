@@ -5,7 +5,7 @@ let width = 3;
 let length = 5;
 let can = 16;
 
-const result = (height * width + height * length + width * length) * 2;
+const result = 2 * (length * height) + 2 * (width * height);
 console.log(Math.ceil(result / can));
 
 // Task 2
