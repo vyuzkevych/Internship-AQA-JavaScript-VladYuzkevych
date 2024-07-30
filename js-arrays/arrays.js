@@ -71,34 +71,48 @@ console.log(calculate("@~@@+@@~~"));
 
 
 // task 2
-function findPartitions(num) {
-    const results = [];
+function generatePartitions(n) {
+    const result = [];
+    const partition = Array(n).fill(0);
+    let k = 0;
+    partition[k] = n;
   
-    function partition(n, max, prefix) {
-      if (n === 0) {
-        results.push(prefix);
-        return;
+    while (true) {
+      result.push(partition.slice(0, k + 1));
+  
+      let remVal = 0;
+      while (k >= 0 && partition[k] === 1) {
+        remVal += partition[k];
+        k--;
       }
-      for (let i = Math.min(max, n); i >= 1; i--) {
-        partition(n - i, i, prefix.concat(i));
+  
+      if (k < 0) return result;
+  
+      partition[k]--;
+      remVal++;
+  
+      while (remVal > partition[k]) {
+        partition[k + 1] = partition[k];
+        remVal -= partition[k];
+        k++;
       }
+  
+      partition[k + 1] = remVal;
+      k++;
     }
-  
-    partition(num, num, []);
-    return results;
   }
   
   function product(arr) {
     return arr.reduce((acc, val) => acc * val, 1);
   }
   
-  function findPartMaxProd(n) {
-    let partitions = findPartitions(n);
+  function findMaxProductPartition(n) {
+    const partitions = generatePartitions(n);
     let maxProduct = 0;
     let maxProductPartitions = [];
   
     partitions.forEach(partition => {
-      let prod = product(partition);
+      const prod = product(partition);
       if (prod > maxProduct) {
         maxProduct = prod;
         maxProductPartitions = [partition];
@@ -111,8 +125,8 @@ function findPartitions(num) {
     return [maxProductPartitions.length === 1 ? maxProductPartitions[0] : maxProductPartitions, maxProduct];
   }
   
-  console.log(findPartMaxProd(8));
-  
+  console.log(findMaxProductPartition(8));
+
 
   // task 3
   function tickets(val) {
