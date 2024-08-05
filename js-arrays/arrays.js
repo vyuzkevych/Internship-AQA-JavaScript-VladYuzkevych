@@ -10,8 +10,6 @@ function convertToArabicNumbers(val) {
         } else if (val[i] === "~") {
             result += num;
             num = 0;
-        } else if (val[i] === "~" && val[i + 1] === "~") {
-            result += 0;
         }
     }
 
@@ -36,7 +34,7 @@ function convertToQuipuNumbers(val) {
             for (let e = 0; e < arr[i]; e++) {
                 result += "@";
             }
-            
+            return result
         }
     }
 
@@ -138,22 +136,26 @@ function generatePartitions(n) {
             cash.push(25);
         } else if (val[i] === 50) {
             cash.push(50);
-            cash.splice(cash.indexOf(25), 1)
+            
             if (cash.includes(25)) {
                 flag = true;
+                cash.splice(cash.indexOf(25), 1)
             } else {
                 flag = false;
             }
         } else if (val[i] === 100) {
             cash.push(100);
+            
             if (cash.includes(25) && cash.includes(50)) {
                 flag = true;
+                cash.splice(cash.indexOf(25), 1)
+                cash.splice(cash.indexOf(50), 1)
             } else {
                 flag = false;
             }
         }
     }
-
+    
     return flag ? console.log("YES") : console.log("NO");
 }
 
