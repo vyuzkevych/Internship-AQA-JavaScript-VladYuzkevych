@@ -27,6 +27,7 @@ const books = [
     }
 ]
 
+// sub-task 1
 function displayTitlesAvailable(arr) {
     arr.forEach(el => {
         if (el.availability === true) console.log(el.title);
@@ -35,6 +36,7 @@ function displayTitlesAvailable(arr) {
 
 displayTitlesAvailable(books);
 
+// sub-task 2
 function findOldesBook(arr) {
     let oldest = arr[0];
 
@@ -49,6 +51,7 @@ function findOldesBook(arr) {
 
 console.log(findOldesBook(books));
 
+// sub-task 3
 function countBooks(arr, author) {
     let count = 0;
     arr.forEach(el => {
@@ -60,6 +63,7 @@ function countBooks(arr, author) {
 
 console.log(countBooks(books, "John Ronald Reuel Tolkien"));
 
+// sub-task 4
 function findRecentBook(arr) {
     let recent = arr[0];
 
@@ -74,6 +78,7 @@ function findRecentBook(arr) {
 
 console.log(findRecentBook(books));
 
+// sub-task 5
 function updateAvailability(arr, title) {
     let book;
 
@@ -89,19 +94,21 @@ function updateAvailability(arr, title) {
 
 console.log(updateAvailability(books, "The Hobbit"));
 
+
 // task 2
 const dictionary = {
+    words: {},
     addWord(key, val) {
-        this[key] = val;
+        this.words[key] = val;
     },
     getEntry(val) {
-        return this[val];
+        return this.words[val];
     },
     getAllWords() {
-        return Object.keys(this);
+        return Object.keys(this.words)
     },
     getAllEntries() {
-        return Object.entries(this);
+        return this.words;
     }
 }
 dictionary.addWord("JavaScript", `A high-level, often just-in-time compiled
@@ -109,5 +116,5 @@ language that conforms to the ECMAScript specification.`);
 dictionary.addWord("Dictionary", `A collection of words and their meanings.`);
 
 console.log(dictionary.getEntry("JavaScript"));
-console.log(dictionary.getAllWords("JavaScript"));
-console.log(dictionary.getAllEntries("JavaScript"));
+console.log(dictionary.getAllWords());
+console.log(dictionary.getAllEntries());
