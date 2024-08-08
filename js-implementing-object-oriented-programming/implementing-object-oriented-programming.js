@@ -184,8 +184,8 @@ class University {
 }
 
 // sub-task 5 | Test the implementation
-const student1 = new Student("John", "Dou", 25, 111, "Java");
-const student2 = new Student("Will", "Smith", 45, 222, "Python");
+const student1 = new Student("John", "Dou", 25, 111);
+const student2 = new Student("Will", "Smith", 45, 222);
 
 const course1 = new Course("Java", 1, 1000);
 const course2 = new Course("Python", 2, 1500);
